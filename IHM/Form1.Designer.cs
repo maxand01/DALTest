@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewEname = new System.Windows.Forms.DataGridView();
@@ -39,10 +41,12 @@
             this.textBoxHiredate = new System.Windows.Forms.TextBox();
             this.textBoxEmpno = new System.Windows.Forms.TextBox();
             this.textBoxSalaire = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEname)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -62,6 +66,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.dataGridViewEname);
             this.panel1.Controls.Add(this.comboBoxLoc);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -72,11 +77,25 @@
             // 
             // dataGridViewEname
             // 
+            this.dataGridViewEname.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEname.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewEname.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEname.Location = new System.Drawing.Point(9, 52);
+            this.dataGridViewEname.MultiSelect = false;
             this.dataGridViewEname.Name = "dataGridViewEname";
-            this.dataGridViewEname.Size = new System.Drawing.Size(240, 150);
+            this.dataGridViewEname.ReadOnly = true;
+            this.dataGridViewEname.RowHeadersVisible = false;
+            this.dataGridViewEname.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewEname.Size = new System.Drawing.Size(433, 150);
             this.dataGridViewEname.TabIndex = 1;
+            this.dataGridViewEname.SelectionChanged += new System.EventHandler(this.dataGridViewEname_SelectionChanged);
             // 
             // comboBoxLoc
             // 
@@ -103,12 +122,13 @@
             // 
             // buttonMAJ
             // 
-            this.buttonMAJ.Location = new System.Drawing.Point(682, 17);
+            this.buttonMAJ.Location = new System.Drawing.Point(206, 17);
             this.buttonMAJ.Name = "buttonMAJ";
             this.buttonMAJ.Size = new System.Drawing.Size(75, 23);
             this.buttonMAJ.TabIndex = 5;
             this.buttonMAJ.Text = "Mise à Jour";
             this.buttonMAJ.UseVisualStyleBackColor = true;
+            this.buttonMAJ.Click += new System.EventHandler(this.buttonMAJ_Click);
             // 
             // labelDetail
             // 
@@ -130,6 +150,7 @@
             // 
             this.textBoxHiredate.Location = new System.Drawing.Point(9, 168);
             this.textBoxHiredate.Name = "textBoxHiredate";
+            this.textBoxHiredate.ReadOnly = true;
             this.textBoxHiredate.Size = new System.Drawing.Size(100, 20);
             this.textBoxHiredate.TabIndex = 2;
             // 
@@ -137,6 +158,7 @@
             // 
             this.textBoxEmpno.Location = new System.Drawing.Point(9, 51);
             this.textBoxEmpno.Name = "textBoxEmpno";
+            this.textBoxEmpno.ReadOnly = true;
             this.textBoxEmpno.Size = new System.Drawing.Size(100, 20);
             this.textBoxEmpno.TabIndex = 1;
             // 
@@ -144,13 +166,26 @@
             // 
             this.textBoxSalaire.Location = new System.Drawing.Point(9, 129);
             this.textBoxSalaire.Name = "textBoxSalaire";
+            this.textBoxSalaire.ReadOnly = true;
             this.textBoxSalaire.Size = new System.Drawing.Size(100, 20);
             this.textBoxSalaire.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(541, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(204, 204);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
@@ -158,9 +193,11 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEname)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,6 +214,7 @@
         private System.Windows.Forms.TextBox textBoxHiredate;
         private System.Windows.Forms.TextBox textBoxEmpno;
         private System.Windows.Forms.TextBox textBoxSalaire;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -11,6 +11,8 @@ namespace BLLSalarie
     public class BLLEmploye
     {
         public int Value { get; set; }
+        public int Numero { get; set; }
+        public string Nom { get; set; }
         public List<Employe> LoadDataEmploye()
         {
             return new DALEmploye().GetAllEmployes();
@@ -20,6 +22,12 @@ namespace BLLSalarie
         {
             this.Value = value;
             return new DALEmploye().GetEmployeByDeptno(Value); 
+        }
+        public void UpdateDataEmploye(int numero, string nom)
+        {
+            this.Numero = numero;
+            this.Nom = nom;
+            new DALEmploye().UpdateEmploye(Numero, Nom);
         }
     }
 }

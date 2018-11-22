@@ -36,7 +36,7 @@ namespace DALSalarie
                 emp.NumeroEmploye = Convert.ToInt32(row["EMPNO"]);
                 emp.NomEmploye = row["ENAME"].ToString();
                 emp.Job = row["JOB"].ToString();
-                //emp.Manager = Convert.ToInt32(row["MGR"]);
+                emp.Manager = Convert.ToInt32(row["MGR"]);
                 emp.Hiredate = Convert.ToDateTime(row["HIREDATE"]);
                 emp.Salaire = Convert.ToDecimal(row["SAL"]);
                 emp.Commission = Convert.ToDecimal(row["SAL"]);
@@ -71,6 +71,33 @@ namespace DALSalarie
                 ListeEmploye.Add(emp);
             }
             return ListeEmploye;
+        }
+
+        public void UpdateEmploye(int numero, string nom)
+        {
+            SqlCommand objSelectCommand = new SqlCommand();
+            objSelectCommand.Connection = cn.cn;
+            objSelectCommand.CommandText = "dbo.UpdateEmp";
+            objSelectCommand.CommandType = CommandType.StoredProcedure;
+            objSelectCommand.Parameters.AddWithValue("@EMPNO", numero);
+            objSelectCommand.Parameters.AddWithValue("@ENAME", nom);
+            int nbLignes = objSelectCommand.ExecuteNonQuery();
+            DataTable objDataTable = new DataTable();
+            SqlDataAdapter objDataAdapter = new SqlDataAdapter(objSelectCommand);
+            objDataAdapter.Fill(objDataTable);
+            foreach (DataRow row in objDataTable.Rows)
+            {
+                Employe emp = new Employe();
+                emp.NumeroEmploye = Convert.ToInt32(row["EMPNO"]);
+                emp.NomEmploye = row["ENAME"].ToString();
+                emp.Job = row["JOB"].ToString();
+                emp.Manager = Convert.ToInt32(row["MGR"]);
+                emp.Hiredate = Convert.ToDateTime(row["HIREDATE"]);
+                emp.Salaire = Convert.ToDecimal(row["SAL"]);
+                emp.Commission = Convert.ToDecimal(row["SAL"]);
+                emp.NumeroDepartement = Convert.ToInt32(row["DEPTNO"]);
+                ListeEmploye.Add(emp);
+            }
         }
     }
 }
