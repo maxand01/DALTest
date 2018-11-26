@@ -46,6 +46,7 @@
     <Compile Include="Connection.cs" />
     <Compile Include="DALDepartement.cs" />
     <Compile Include="DALEmploye.cs" />
+    <Compile Include="DAOException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

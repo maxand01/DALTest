@@ -23,11 +23,12 @@ namespace BLLSalarie
             this.Value = value;
             return new DALEmploye().GetEmployeByDeptno(Value); 
         }
-        public void UpdateDataEmploye(int numero, string nom)
+        public int UpdateDataEmploye(int numero, string nom)
         {
             this.Numero = numero;
             this.Nom = nom;
-            new DALEmploye().UpdateEmploye(Numero, Nom);
+            return new DALEmploye().UpdateEmploye(Numero, Nom);
+             
         }
     }
 }

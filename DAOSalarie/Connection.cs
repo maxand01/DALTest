@@ -9,7 +9,7 @@ namespace DALSalarie
 {
      public class Connection
     {
-        public SqlConnection cn { get; set; }
+        public SqlConnection cn;
         public Connection()
         {
             cn = new SqlConnection();

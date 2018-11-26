@@ -17,7 +17,6 @@ namespace DALSalarie
 
         public DALDepartement()
         {
-            cn = new Connection();
         }
 
         public DataSet GetAllDepartement()

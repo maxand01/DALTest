@@ -86,7 +86,7 @@ namespace DALSalarie
             return ListeEmploye;
         }
 
-        public void UpdateEmploye(int numero, string nom)
+        public int UpdateEmploye(int numero, string nom)
         {
             SqlCommand objSelectCommand = new SqlCommand();
             objSelectCommand.Connection = cn.cn;
@@ -126,6 +126,7 @@ namespace DALSalarie
                 emp.NumeroDepartement = Convert.ToInt32(row["DEPTNO"]);
                 ListeEmploye.Add(emp);
             }
+            return nbLignes;
         }
     }
 }
