@@ -36,10 +36,25 @@ namespace DALSalarie
                 emp.NumeroEmploye = Convert.ToInt32(row["EMPNO"]);
                 emp.NomEmploye = row["ENAME"].ToString();
                 emp.Job = row["JOB"].ToString();
-                emp.Manager = Convert.ToInt32(row["MGR"]);
+                if (row.IsNull("MGR"))
+                {
+                    emp.Manager = 0;
+                }
+                else
+                {
+                    emp.Manager = Convert.ToInt32(row["MGR"]);
+                }
                 emp.Hiredate = Convert.ToDateTime(row["HIREDATE"]);
                 emp.Salaire = Convert.ToDecimal(row["SAL"]);
-                emp.Commission = Convert.ToDecimal(row["SAL"]);
+                if (row.IsNull("COMM"))
+                {
+                    emp.Commission = 0;
+                }
+                else
+                {
+                    emp.Commission = Convert.ToDecimal(row["COMM"]);
+
+                }
                 emp.NumeroDepartement = Convert.ToInt32(row["DEPTNO"]);
                 ListeEmploye.Add(emp);
             }
@@ -62,11 +77,9 @@ namespace DALSalarie
                 Employe emp = new Employe();
                 emp.NumeroEmploye = Convert.ToInt32(row["EMPNO"]);
                 emp.NomEmploye = row["ENAME"].ToString();
-                emp.Job = row["JOB"].ToString();
-                //emp.Manager = Convert.ToInt32(row["MGR"]);
+                emp.Job = row["JOB"].ToString();                
                 emp.Hiredate = Convert.ToDateTime(row["HIREDATE"]);
-                emp.Salaire = Convert.ToDecimal(row["SAL"]);
-                emp.Commission = Convert.ToDecimal(row["SAL"]);
+                emp.Salaire = Convert.ToDecimal(row["SAL"]);                
                 emp.NumeroDepartement = Convert.ToInt32(row["DEPTNO"]);
                 ListeEmploye.Add(emp);
             }
@@ -91,10 +104,25 @@ namespace DALSalarie
                 emp.NumeroEmploye = Convert.ToInt32(row["EMPNO"]);
                 emp.NomEmploye = row["ENAME"].ToString();
                 emp.Job = row["JOB"].ToString();
-                emp.Manager = Convert.ToInt32(row["MGR"]);
+                if (row.IsNull("MGR"))
+                {
+                    emp.Manager = 0;
+                }
+                else
+                {
+                    emp.Manager = Convert.ToInt32(row["MGR"]);
+                }
                 emp.Hiredate = Convert.ToDateTime(row["HIREDATE"]);
                 emp.Salaire = Convert.ToDecimal(row["SAL"]);
-                emp.Commission = Convert.ToDecimal(row["SAL"]);
+                if (row.IsNull("COMM"))
+                {
+                    emp.Commission = 0;
+                }
+                else
+                {
+                    emp.Commission = Convert.ToDecimal(row["COMM"]);
+
+                }
                 emp.NumeroDepartement = Convert.ToInt32(row["DEPTNO"]);
                 ListeEmploye.Add(emp);
             }
